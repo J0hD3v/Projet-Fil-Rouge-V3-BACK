@@ -16,16 +16,28 @@ To deploy this project run
 
 ## API Reference
 
-#### Get all messages
+#### Get all users
 
 ```http
-  GET http://localhost:3000/messages
+  GET http://localhost:3000/users
   
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `none`    | `-`      | No parameters              |
+
+
+#### Get user by name
+
+```http
+  GET http://localhost:3000/userbyname
+  
+```
+
+| Parameter | Type     | Description                     |
+| :-------- | :------- | :------------------------------ |
+| `name`    | `string`      | **Required**. User's name  |
 
 
 #### Save new messages
