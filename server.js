@@ -1,7 +1,8 @@
 // Import functions from controllers
 const { connectDb } = require('./utils.js');
 const { sendMessages, saveMessage } = require('./controllers/messagesController.js');
-const { getAllUsers, getUserByName } = require('./controllers/usersController.js');
+const UserController = require('./controllers/usersController.js');
+const ReservationsController = require('./controllers/reservationsController.js');
 const { createTransaction, updateItemOwner } = require('./controllers/transactionsController.js');
 
 // Import modules
@@ -98,41 +99,35 @@ passport.deserializeUser((id, done) => {
 
 
 
-// Create url for routes
-const route_Messages = '/messages';
-const route_Users = '/users';
-const route_UserByName = '/userbyname';
-const route_Transactions = '/transactions';
-
 // Create routes
-app.get(route_Messages, (req,res) => {
+app.get('/messages', (req,res) => {
     sendMessages(req,res,data);
 });
 
-app.post(route_Messages, (req,res) => {
+app.post('/messages', (req,res) => {
     data = saveMessage(req,res,data);
 });
 
-app.get(route_Users, (req,res) => {
-    getAllUsers(req,res,connectionDb);
+app.get('/users', (req,res) => {
+    UserController.getAllUsers(req,res,connectionDb);
 });
 
-app.get(route_UserByName, (req,res) => {
-    getUserByName(req,res,connectionDb);
+app.get('/userbyname', (req,res) => {
+    UserController.getUserByName(req,res,connectionDb);
 });
 
-app.put(route_Transactions, (req,res) => {
+app.put('/transactions', (req,res) => {
     updateItemOwner(req,res,connectionDb);
 });
 
-app.post(route_Transactions, (req,res) => {
+app.post('/transactions', (req,res) => {
     createTransaction(req,res,connectionDb);
 });
 
 
 app.post(
     '/login',
-    passport.authenticate('local', { successRedirect: '/success', failureRedirect: '/failure', }),
+    passport.authenticate('local', { successRedirect: '/success', failureRedirect: '/failure' }),
     function(req, res) {
     console.log('ça marche !!!!!!');
     // res.redirect('/~' + req.user.username);
