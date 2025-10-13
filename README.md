@@ -1,4 +1,4 @@
-# Project Jerem
+# Projet Fil Rouge
 
 Serveur backend du projet Fil Rouge; Site vitrine d'un club de padel
 
