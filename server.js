@@ -120,8 +120,20 @@ app.put('/transactions', (req,res) => {
     updateItemOwner(req,res,connectionDb);
 });
 
-app.post('/transactions', (req,res) => {
-    createTransaction(req,res,connectionDb);
+app.get('/reservations', (req,res) => {
+    ReservationsController.getAllReservations(req,res);
+});
+
+app.post('/reservation', (req,res) => {
+    ReservationsController.createReservation(req,res);
+});
+
+app.get('/evenements', (req,res) => {
+    
+});
+
+app.put('/evenement', (req,res) => {
+    
 });
 
 
