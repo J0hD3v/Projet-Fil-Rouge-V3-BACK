@@ -51,3 +51,28 @@ To deploy this project run
 | :--------- | :-------------- | :------------------------------------------- |
 | `messages` | `array<string>` | **Required**. Array containing your messages |
 
+
+#### Get all reservations
+
+```http
+  GET http://localhost:3000/reservations
+  
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `none`    | `-`      | No parameters              |
+
+
+#### Save new reservation
+
+```http
+  POST http://localhost:3000/reservation
+  
+```
+
+| Parameter      | Type  | Description              |
+| :------------- | :---- | :----------------------- |
+| `idUser`       | `int` | **Required**. User's ID  |
+| `idTerrain`    | `int` | **Required**. Field's ID |
+| `date_horaire` | `int` | **Required**. Datetime   |
