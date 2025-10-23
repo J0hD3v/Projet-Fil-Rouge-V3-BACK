@@ -65,7 +65,7 @@ const connectionDb = connectDb(
     process.env.DB_PASSWORD,
     process.env.DB_NAME
 );
-
+const reservationsController = new ReservationsController(connectionDb);
 // temporary internal data
 let data =
 [
@@ -120,13 +120,9 @@ app.put('/transactions', (req,res) => {
     updateItemOwner(req,res,connectionDb);
 });
 
-app.get('/reservations', (req,res) => {
-    ReservationsController.getAllReservations(req,res);
-});
+app.get('/reservations', reservationsController.getAllReservations.bind(reservationsController));
 
-app.post('/reservation', (req,res) => {
-    ReservationsController.createReservation(req,res);
-});
+app.post('/reservation', reservationsController.createReservation.bind(reservationsController));
 
 app.get('/evenements', (req,res) => {
     

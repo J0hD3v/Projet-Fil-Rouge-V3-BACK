@@ -7,7 +7,7 @@ class ReservationsController {
         if (this.connectionDb) {
             try {
                 this.connectionDb.query(
-                    'SELECT creneau FROM reservations',
+                    'SELECT reservations.date_horaire FROM reservations',
                     (err, rows, fields) => {
                         res.send(rows);
                     }
@@ -31,7 +31,7 @@ class ReservationsController {
             const date_horaire = req.body.date_horaire
             try {
                 this.connectionDb.query(
-                    'INSERT INTO transaction (id_utilisateur, id_terrain, date_horaire) VALUES (?, ?, ?)',
+                    'INSERT INTO reservations (id_utilisateur, id_terrain, date_horaire) VALUES (?, ?, ?)',
                     [idUser, idTerrain, date_horaire],
                     (err, rows, fields) => {
                         if (err) console.log(err);
